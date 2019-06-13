@@ -5,82 +5,93 @@ from matplotlib import font_manager, rc
 font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
 rc('font', family=font_name)
 
-s = {'국어':1.2,
-'영어':1.2,
-'심수1':3.0,
-'심수2':3.0,
-'물리':3.2,
-'화학':3.2,
-'생물':2.6,
-'지학':2.6}
+%matplotlib inline
 
-a = input('당신의 현재 국어 등급을 입력하시오')
-A = input('당신의 목표 국어 등급을 입력하시오')
-pa=int(a)
-pA=int(A)
-aA=pa-pA
+o = {'국어':0,
+'영어':0,
+'심수1':0,
+'심수2':0,
+'물리':0,
+'화학':0,
+'생물':0,
+'지학':0}
 
-b = input('당신의 현재 영어 등급을 입력하시오')
-B = input('당신의 목표 영어 등급을 입력하시오')
-pb=int(b)
-pB=int(B)
-bB=pb-pB
+while True:
+x = input('오늘은 어떤 과목 공부했나요?')
+if x == '그만' :
+break
+y = float(input('몇 시간 공부했나요?'))
+o[x] =+ y
+print(o)
+xx=o.keys()
+yy=o.values()
 
-c = input('당신의 현재 심수1 등급을 입력하시오')
-C = input('당신의 목표 심수1 등급을 입력하시오')
-pc=int(c)
-pC=int(C)
-cC=pc-pC
+p = np.arange(8)
+plt.bar(p, yy)
+plt.xticks(p, xx)
+plt.show()
+a = int(input('현재 국어 등급을 입력하세요.'))
+A = int(input('목표 국어 등급을 입력하세요.'))
+aA=a-A
 
-d = input('당신의 현재 심수2 등급을 입력하시오')
-D = input('당신의 목표 심수2 등급을 입력하시오')
-pd=int(d)
-pD=int(D)
-dD=pd-pD
+b = int(input('현재 영어 등급을 입력하세요.'))
+B = int(input('목표 영어 등급을 입력하세요.'))
+bB=b-B
 
-e = input('당신의 현재 물리 등급을 입력하시오')
-E = input('당신의 목표 물리 등급을 입력하시오')
-pe=int(e)
-pE=int(E)
-eE=pe-pE
+c = int(input('현재 심수1 등급을 입력하세요.'))
+C = int(input('목표 심수1 등급을 입력하세요.'))
+cC=c-C
 
-f = input('당신의 현재 화학 등급을 입력하시오')
-F = input('당신의 목표 화학 등급을 입력하시오')
-pf=int(f)
-pF=int(F)
-fF=pf-pF
+d = int(input('현재 심수2 등급을 입력하세요.'))
+D = int(input('목표 심수2 등급을 입력하세요.'))
+dD=d-D
 
-g = input('당신의 현재 생물 등급을 입력하시오')
-G = input('당신의 목표 생물 등급을 입력하시오')
-pg=int(g)
-pG=int(G)
-gG=pg-pG
+e = int(input('현재 물리 등급을 입력하세요.'))
+E = int(input('목표 물리 등급을 입력하세요.'))
+eE=e-E
 
-h = input('당신의 현재 지학 등급을 입력하시오')
-H = input('당신의 목표 지학 등급을 입력하시오')
-ph=int(h)
-pH=int(H)
-hH=ph-pH
+f = int(input('현재 화학 등급을 입력하세요.'))
+F = int(input('목표 화학 등급을 입력하세요.'))
+fF=f-F
 
-X=aA+bB+cC+dD+eE+fF+gG+hH
+g = int(input('현재 생물 등급을 입력하세요.'))
+G = int(input('목표 생물 등급을 입력하세요.'))
+gG=g-G
 
-k = {'국어':aA/X,
-'영어':bB/X,
-'심수1':cC/X,
-'심수2':dD/X,
-'물리':eE/X,
-'화학':fF/X,
-'생물':gG/X,
-'지학':hH/X}
+h = int(input('현재 지학 등급을 입력하세요.'))
+H = int(input('목표 지학 등급을 입력하세요.'))
+hH=h-H
 
-q = {'국어':s['국어']*0.75+k['국어']*5,
-'영어':s['영어']*0.75+k['영어']*5,
-'심수1':s['심수1']*0.75+k['심수1']*5,
-'심수2':s['심수2']*0.75+k['심수2']*5,
-'물리':s['물리']*0.75+k['물리']*5,
-'화학':s['화학']*0.75+k['화학']*5,
-'생물':s['생물']*0.75+k['생물']*5,
-'지학':s['지학']*0.75+k['지학']*5,}
+m=o['국어']+o['영어']+o['심수1']+o['심수2']+o['물리']+o['화학']+o['생물']+o['지학']
+n=aA+bB+cC+dD+eE+fF+gG+hH
+
+i = {'국어':o['국어']/m,
+'영어':o['영어']/m,
+'심수1':o['심수1']/m,
+'심수2':o['심수2']/m,
+'물리':o['물리']/m,
+'화학':o['화학']/m,
+'생물':o['생물']/m,
+'지학':o['지학']/m,}
+
+j = {'국어':aA/n,
+'영어':bB/n,
+'심수1':cC/n,
+'심수2':dD/n,
+'물리':eE/n,
+'화학':fF/n,
+'생물':gG/n,
+'지학':hH/n}
+
+q = {'국어':i['국어']*0.6+j['국어']*0.4,
+'영어':i['영어']*0.6+j['영어']*0.4,
+'심수1':i['심수1']*0.6+j['심수1']*0.4,
+'심수2':i['심수2']*0.6+j['심수2']*0.4,
+'물리':i['물리']*0.6+j['물리']*0.4,
+'화학':i['화학']*0.6+j['화학']*0.4,
+'생물':i['생물']*0.6+j['생물']*0.4,
+'지학':i['지학']*0.6+j['지학']*0.4,}
+
 plt.axis('equal')
 
 labels = q.keys()
@@ -88,3 +99,4 @@ sizes = q.values()
 
 plt.pie(sizes, labels=labels, autopct='%1.1f%%')
 plt.show()
+print('이 정도 비율로 공부해보는건 어떨까요?')
