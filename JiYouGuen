@@ -1,1 +1,90 @@
-저는 유근이의 사랑을 응원합니다 
+import matplotlib.pyplot as plt
+import numpy as np
+
+from matplotlib import font_manager, rc
+font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
+rc('font', family=font_name)
+
+s = {'국어':1.2,
+'영어':1.2,
+'심수1':3.0,
+'심수2':3.0,
+'물리':3.2,
+'화학':3.2,
+'생물':2.6,
+'지학':2.6}
+
+a = input('당신의 현재 국어 등급을 입력하시오')
+A = input('당신의 목표 국어 등급을 입력하시오')
+pa=int(a)
+pA=int(A)
+aA=pa-pA
+
+b = input('당신의 현재 영어 등급을 입력하시오')
+B = input('당신의 목표 영어 등급을 입력하시오')
+pb=int(b)
+pB=int(B)
+bB=pb-pB
+
+c = input('당신의 현재 심수1 등급을 입력하시오')
+C = input('당신의 목표 심수1 등급을 입력하시오')
+pc=int(c)
+pC=int(C)
+cC=pc-pC
+
+d = input('당신의 현재 심수2 등급을 입력하시오')
+D = input('당신의 목표 심수2 등급을 입력하시오')
+pd=int(d)
+pD=int(D)
+dD=pd-pD
+
+e = input('당신의 현재 물리 등급을 입력하시오')
+E = input('당신의 목표 물리 등급을 입력하시오')
+pe=int(e)
+pE=int(E)
+eE=pe-pE
+
+f = input('당신의 현재 화학 등급을 입력하시오')
+F = input('당신의 목표 화학 등급을 입력하시오')
+pf=int(f)
+pF=int(F)
+fF=pf-pF
+
+g = input('당신의 현재 생물 등급을 입력하시오')
+G = input('당신의 목표 생물 등급을 입력하시오')
+pg=int(g)
+pG=int(G)
+gG=pg-pG
+
+h = input('당신의 현재 지학 등급을 입력하시오')
+H = input('당신의 목표 지학 등급을 입력하시오')
+ph=int(h)
+pH=int(H)
+hH=ph-pH
+
+X=aA+bB+cC+dD+eE+fF+gG+hH
+
+k = {'국어':aA/X,
+'영어':bB/X,
+'심수1':cC/X,
+'심수2':dD/X,
+'물리':eE/X,
+'화학':fF/X,
+'생물':gG/X,
+'지학':hH/X}
+
+q = {'국어':s['국어']*0.75+k['국어']*5,
+'영어':s['영어']*0.75+k['영어']*5,
+'심수1':s['심수1']*0.75+k['심수1']*5,
+'심수2':s['심수2']*0.75+k['심수2']*5,
+'물리':s['물리']*0.75+k['물리']*5,
+'화학':s['화학']*0.75+k['화학']*5,
+'생물':s['생물']*0.75+k['생물']*5,
+'지학':s['지학']*0.75+k['지학']*5,}
+plt.axis('equal')
+
+labels = q.keys()
+sizes = q.values()
+
+plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+plt.show()
